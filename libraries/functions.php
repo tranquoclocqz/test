@@ -1361,18 +1361,17 @@ function breadcrumb($data = array())
 {
 	global $com;
 	$str = '<ul class="breadcrumb">';
-	$str .= '<li><a href="' . SITE_URI . '" title="' . _trangchu . '">' . _trangchu . '</a></li>';
+	$str .= '<li> <a href="' . SITE_URI . '" title="' . _trangchu . '">' . _trangchu . '</a> </li>';
 	if ($data['first'] && $com != 'bat-dong-san') {
 		$str .= '<li><a href="' . $data['first']['link'] . '" title="' . $data['first']['ten'] . '">' . $data['first']['ten'] . '</a></li>';
 	}
-	foreach ($data['item'] as $key => $value) {
+	foreach ($data['item'] as $value) {
 		if ((int) $value['id'] == 0) {
 			break;
 		}
 		$item = _fetch_array("SELECT ten_vi as ten,tenkhongdau,id from table_" . $value['table'] . " where id = '" . $value['id'] . "' and hienthi = 1");
 		$str .= !empty($item) ? '<li><a href="' . $item['tenkhongdau'] . '" title="' . $item['ten'] . '">' . $item['ten'] . '</a></li>' : '';
 	}
-	$str .= '<li>' . $data['last'] . '</li>';
-	$str .= '</ul>';
+	$str .= '<li>' . $data['last'] . '</li> </ul>';
 	return $str;
 }
