@@ -1,0 +1,1 @@
+<div class="banner2" data-bg="url(<?php echo _upload_hinhanh_l.$bgweb_trang_trong['photo'] ?>)">></div>

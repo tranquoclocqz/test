@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'Roboto';
+  src: local('RobotoRegular'), url('RobotoRegular.eot');
+  src: local('RobotoRegular'), url('RobotoRegular.eot?#iefix') format('embedded-opentype'), url('RobotoRegular.woff') format('woff'), url('RobotoRegular.ttf') format('truetype'), url('RobotoRegular.svg#RobotoRegular') format('svg');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: local('RobotoBold'), url('RobotoBold.eot');
+  src: local('RobotoBold'), url('RobotoBold.eot?#iefix') format('embedded-opentype'), url('RobotoBold.woff') format('woff'), url('RobotoBold.ttf') format('truetype'), url('RobotoBold.svg#RobotoBold') format('svg');
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+
+body {
+	font-family: Roboto, sans-serif;
+	margin:0;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 1.5em;
+	color: #333333;
+	top: 0 !important;
+	background: #fff;
+	padding: 15px;
+}
+
+[hidden],
+template {
+	display: none;
+}
+.overflow-hidden {
+	overflow: hidden;
+}
+hr {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	height: 0;
+}
+pre {
+	overflow: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+h1{
+	font-size: 2em
+}
+h2{
+	font-size: 1.5em
+}
+h3{
+	font-size: 1.17em
+}
+h4{
+	font-size: 1em
+}
+h5{
+	font-size: .83em
+}
+h6{
+	font-size: .75em
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+a{
+	color: inherit;
+}
+ul {
+	padding-left: 10px;
+	margin: 0 0 10px 10px;
+}
+ul a{
+	color: #337ab7;
+	text-decoration: none;
+	font-size: 14px;
+}
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	color: #4f93ce;
+	text-decoration: none;
+}
+p {
+	margin: 0 0 10px;
+}
+img {
+	vertical-align: middle;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+table thead > tr > td,
+table tbody > tr > td,
+table tfoot > tr > td,
+table thead > tr th,
+table tbody > tr th,
+table tfoot > tr th {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 9px 20px;
+	border: 1px solid #e6e6e6;
+	font-size: 14px;
+	color: #4c4c4c;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}

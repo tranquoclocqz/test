@@ -1,0 +1,106 @@
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/html "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 1 month"
+</IfModule>
+## EXPIRES CACHING ##
+
+<ifModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/* text/html text/xml text/css text/plain text/x-component text/x-js text/richtext text/xsd text/xsl
+AddOutputFilterByType DEFLATE image/svg+xml application/xhtml+xml application/xml image/x-icon
+AddOutputFilterByType DEFLATE application/rdf+xml application/rss+xml application/atom+xml
+AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript application/json
+AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-otf
+AddOutputFilterByType DEFLATE font/truetype font/opentype
+Header append Vary User-Agent env=!dont-vary
+AddOutputFilter DEFLATE js css htm html xml text
+</ifModule>
+
+# 1 year
+<FilesMatch ".(ico|pdf|flv)$">
+Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+# 1 WEEK
+<FilesMatch ".(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+# 2 DAYS
+<FilesMatch ".(xml|txt|css|js)$">
+Header set Cache-Control "max-age=31536000, proxy-revalidate"
+</FilesMatch>
+
+<FilesMatch ".(xml|txt|css|js|woff|woff2)$">
+Header set Cache-Control "max-age=31536000, proxy-revalidate"
+</FilesMatch>
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+	Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# Helicon Ape version 3.1.0.115
+
+RewriteEngine On
+
+<FilesMatch "config\.php|functions\.php|include\.php">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{QUERY_STRING} (eval\() [NC,OR]
+	RewriteCond %{QUERY_STRING} (127\.0\.0\.1) [NC,OR]
+	RewriteCond %{QUERY_STRING} ([a-z0-9]{2000,}) [NC,OR]
+	RewriteCond %{QUERY_STRING} (javascript:)(.*)(;) [NC,OR]
+	RewriteCond %{QUERY_STRING} (base64_encode)(.*)(\() [NC,OR]
+	RewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC,OR]
+	RewriteCond %{QUERY_STRING} (<|%3C)(.*)script(.*)(>|%3) [NC,OR]
+	RewriteCond %{QUERY_STRING} (\\|\.\.\.|\.\./|~|`|<|>|\|) [NC,OR]
+	RewriteCond %{QUERY_STRING} (boot\.ini|etc/passwd|self/environ) [NC,OR]
+	RewriteCond %{QUERY_STRING} (thumbs?(_editor|open)?|tim(thumb)?)\.php [NC,OR]
+	RewriteCond %{QUERY_STRING} (\'|\")(.*)(drop|insert|md5|select|union) [NC]
+	RewriteRule .* - [F]
+</IfModule>
+
+DirectoryIndex index.php
+
+RewriteRule ^admin/$ admin/index.php [L]
+
+RewriteRule ^thumb/([0-9]+)x([0-9]+)/([0-9]+)/(.*)$ timthumb.php?w=$1&h=$2&zc=$3&q=100&src=http://%{HTTP_HOST}/tothithumai_21_05_2020_1251620/$4  [L]
+
+RewriteRule ^watermark/([0-9]+)x([0-9]+)/([0-9]+)/(.*) timthumb_watermark.php?src=$4&w=$1&h=$2&zc=$3&q=100&wm=1&wl=5&wmr=10&cc=ffffff [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^sitemap.xml$ sitemap.php [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/$ http://%{HTTP_HOST}/tothithumai_21_05_2020_1251620/$1 [L,R=301]
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?com=$1  [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?com=$1  [L]
+RewriteRule ^([a-zA-Z0-9_-]+)&(.*)$ index.php?com=$1&$2  [L]
+
+
+<Ifmodule mod_php4.c>
+php_flag display_errors  off
+php_flag log_errors  off
+</Ifmodule>
+
+<Ifmodule mod_php5.c>
+php_value short_open_tag 1
+php_flag display_errors  off
+php_flag log_errors  off
+php_flag enable_dl  on
+</Ifmodule>

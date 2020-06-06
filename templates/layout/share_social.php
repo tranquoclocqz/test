@@ -1,0 +1,3 @@
+<div class="flex-box"><div class="addthis_inline_share_toolbox"></div><div class="zalo-share-button" data-href="<?php echo getCurrentPageURL() ?>" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize=false></div></div>
+<script src="https://sp.zalo.me/plugins/sdk.js" async></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5aec0feaf0ced717" async></script>
